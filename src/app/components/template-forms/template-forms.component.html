@@ -1,0 +1,70 @@
+<div class="container">
+  <form (ngSubmit)="submit()" #forma="ngForm">
+    <h3>Calcular Promedio</h3>
+    <hr />
+
+    <label for="nota1"><b>Nota 1</b></label>
+    <input
+      type="text"
+      #nota1="ngModel"
+      [(ngModel)]="notas.nota1"
+      placeholder="Introduzca la primera nota"
+      name="nota1"
+      class="form-control"
+      required
+      [ngClass]="{'is-valid': nota1.valid && (nota1.dirty || nota1.touched), 'is-invalid': nota1.invalid && (nota1.dirty || nota1.touched)}"
+    />
+    <div class="invalid-feedback" *ngIf="nota1.invalid && (nota1.dirty || nota1.touched)">
+      <div *ngIf="nota1.errors?.['required']">
+        Introduzca una nota válida por favor
+      </div>
+    </div>
+
+    <label for="nota2"><b>Nota 2</b></label>
+    <input
+      type="text"
+      #nota2="ngModel"
+      [(ngModel)]="notas.nota2"
+      placeholder="Introduzca la segunda nota"
+      name="nota2"
+      class="form-control"
+      required
+      [ngClass]="{'is-valid': nota2.valid && (nota2.dirty || nota2.touched), 'is-invalid': nota2.invalid && (nota2.dirty || nota2.touched)}"
+    />
+    <div class="invalid-feedback" *ngIf="nota2.invalid && (nota2.dirty || nota2.touched)">
+      <div *ngIf="nota2.errors?.['required']">
+        Introduzca una nota válida por favor
+      </div>
+    </div>
+
+    <label for="nota3"><b>Nota 3</b></label>
+    <input
+      type="text"
+      #nota3="ngModel"
+      [(ngModel)]="notas.nota3"
+      placeholder="Introduzca la tercera nota"
+      name="nota3"
+      class="form-control"
+      required
+      [ngClass]="{'is-valid': nota3.valid && (nota3.dirty || nota3.touched), 'is-invalid': nota3.invalid && (nota3.dirty || nota3.touched)}"
+    />
+    <div class="invalid-feedback" *ngIf="nota3.invalid && (nota3.dirty || nota3.touched)">
+      <div *ngIf="nota3.errors?.['required']">
+        Introduzca una nota válida por favor
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-lg">
+        <button type="submit" [disabled]="!forma.valid" class="signup-btn">
+          Calcular Promedio
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="promedio !== null" class="alert alert-info mt-3">
+      Promedio: {{ promedio }}
+    </div>
+  </form>
+</div>
